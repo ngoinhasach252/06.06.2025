@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngôi nhà của sách</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #202124;
+        }
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(0,0,0,0.87);
+        }
+        .user-name {
+            margin-right: 15px;
+        }
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+            font-weight: bold;
+        }
+        .main-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+        .logo span:nth-child(1) { color: #4285F4; }
+        .logo span:nth-child(2) { color: #EA4335; }
+        .logo span:nth-child(3) { color: #FBBC05; }
+        .logo span:nth-child(4) { color: #4285F4; }
+        .logo span:nth-child(5) { color: #34A853; }
+        .logo span:nth-child(6) { color: #EA4335; }
+        .search-box {
+            width: 80%;
+            max-width: 580px;
+            height: 44px;
+            border-radius: 24px;
+            border: 1px solid #dfe1e5;
+            padding: 0 20px;
+            font-size: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.08);
+        }
+        .search-box:hover {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+        .buttons {
+            margin: 20px 0 40px;
+        }
+        .search-button, .lucky-button {
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            color: #3c4043;
+            font-size: 14px;
+            padding: 10px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .search-button:hover, .lucky-button:hover {
+            border: 1px solid #dadce0;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        .results-container {
+            margin-top: 40px;
+            text-align: left;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.08);
+            padding: 20px;
+        }
+        .results-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #202124;
+            border-bottom: 1px solid #ecedef;
+            padding-bottom: 10px;
+        }
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .book-table th {
+            text-align: left;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            font-weight: 500;
+        }
+        .book-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecedef;
+        }
+        .book-title {
+            font-weight: 500;
+            color: #1a0dab;
+        }
+        .book-author {
+            color: #5f6368;
+            font-size: 14px;
+        }
+        .book-rating {
+            color: #FFA500;
+            font-weight: bold;
+        }
+        .book-price {
+            font-weight: bold;
+            color: #34A853;
+        }
+        .buy-button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .buy-button:hover {
+            background-color: #3367d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="user-info">
+            <div class="user-name">Dũng Trần</div>
+            <div class="user-avatar">D</div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="logo">
+            <span>N</span>
+            <span>g</span>
+            <span>ô</span>
+            <span>i</span>
+            <span> </span>
+            <span>n</span>
+            <span>h</span>
+            <span>à</span>
+            <span> </span>
+            <span>c</span>
+            <span>ủ</span>
+            <span>a</span>
+            <span> </span>
+            <span>s</span>
+            <span>á</span>
+            <span>c</span>
+            <span>h</span>
+        </div>
+        
+        <form action="https://www.google.com/search" method="GET">
+            <input type="text" name="q" class="search-box" placeholder="Tìm kiếm sách, tác giả hoặc thể loại">
+            <div class="buttons">
+                <input type="submit" value="Tìm kiếm" class="search-button">
+                <input type="submit" value="Tôi cảm thấy may mắn" class="lucky-button" 
+                       formaction="https://www.google.com/search" formmethod="GET" name="btnI">
+            </div>
+        </form>
+        
+        <div class="results-container">
+            <div class="results-title">Sách đề xuất cho bạn</div>
+            <table class="book-table">
+                <thead>
+                    <tr>
+                        <th>Tên sách</th>
+                        <th>Đánh giá</th>
+                        <th>Giá</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="book-title">Nhà Giả Kim</div>
+                            <div class="book-author">Paulo Coelho</div>
+                        </td>
+                        <td class="book-rating">4.7 ★ (12,345)</td>
+                        <td class="book-price">75.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Đắc Nhân Tâm</div>
+                            <div class="book-author">Dale Carnegie</div>
+                        </td>
+                        <td class="book-rating">4.8 ★ (15,678)</td>
+                        <td class="book-price">89.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Tuổi Trẻ Đáng Giá Bao Nhiêu</div>
+                            <div class="book-author">Rosie Nguyễn</div>
+                        </td>
+                        <td class="book-rating">4.6 ★ (9,876)</td>
+                        <td class="book-price">65.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Cà Phê Cùng Tony</div>
+                            <div class="book-author">Tony Buổi Sáng</div>
+                        </td>
+                        <td class="book-rating">4.5 ★ (8,543)</td>
+                        <td class="book-price">59.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Tôi Tài Giỏi Bạn Cũng Thế</div>
+                            <div class="book-author">Adam Khoo</div>
+                        </td>
+                        <td class="book-rating">4.4 ★ (7,654)</td>
+                        <td class="book-price">99.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Bố Già</div>
+                            <div class="book-author">Mario Puzo</div>
+                        </td>
+                        <td class="book-rating">4.7 ★ (10,987)</td>
+                        <td class="book-price">110.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Sherlock Holmes Toàn Tập</div>
+                            <div class="book-author">Arthur Conan Doyle</div>
+                        </td>
+                        <td class="book-rating">4.9 ★ (13,456)</td>
+                        <td class="book-price">150.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Hoàng Tử Bé</div>
+                            <div class="book-author">Antoine de Saint-Exupéry</div>
+                        </td>
+                        <td class="book-rating">4.8 ★ (11,234)</td>
+                        <td class="book-price">55.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Trên Đường Băng</div>
+                            <div class="book-author">Tony Buổi Sáng</div>
+                        </td>
+                        <td class="book-rating">4.5 ★ (8,765)</td>
+                        <td class="book-price">69.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="book-title">Lược Sử Thời Gian</div>
+                            <div class="book-author">Stephen Hawking</div>
+                        </td>
+                        <td class="book-rating">4.7 ★ (9,876)</td>
+                        <td class="book-price">125.000₫</td>
+                        <td><button class="buy-button">Mua ngay</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
